@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Photography Booking Form</title>
+        <style>
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        body {
+            font-family: "Montserrat", sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #000;
+            background-image: url("Couple/040.jpg");
+            background-repeat: no-repeat;
+            background-size:contain;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #ff6f00;
+            padding: 10px 20px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            font-family: "Montserrat", sans-serif;
+        }
+
+        .navbar ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            font-family: "Montserrat", sans-serif;
+        }
+
+        .navbar li {
+            margin: 0 15px;
+            font-family: "Montserrat", sans-serif;
+        }
+
+        .navbar a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            transition: color 0.3s, background-color 0.3s;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-family: "Montserrat", sans-serif;
+        }
+
+        .navbar a:hover {
+            background-color: white;
+            color: #ff6f00;
+        }
+
+        .navbar .logo img {
+            max-width: 100px;
+            height: auto;
+        }
+
+        .menu-toggle {
+            display: none;
+        }
+
+        @media screen and (max-width: 768px) {
+            .navbar ul {
+                flex-direction: column;
+                display: none;
+                width: 100%;
+                background-color: #ff6f00;
+            }
+
+            .navbar ul.show {
+                display: flex;
+            }
+
+            .navbar li {
+                margin: 10px 0;
+            }
+
+            .menu-toggle {
+                display: block;
+                cursor: pointer;
+                color: white;
+            }
+            .container{
+                margin-left: 20px;
+                max-width: 370px;
+                
+            }
+        }
+
+.container {
+            align-items: center;
+            align-content: center;
+            justify-content: center;
+            max-width: 800px;
+            max-height: 750px;
+            margin-top: 70px;
+            margin-left: 20%;
+            background: white;
+            padding: 25px 40px;
+            box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+            border-radius: 10px;
+            align-items: stretch;
+}
+
+.text {
+    text-align: center;
+    font-size: 35px;
+    font-weight: 600;
+    font-family: "Montserrat", sans-serif;
+    color: black;
+    
+    
+     margin-bottom: 30px;
+}
+
+.contact-left{
+    margin-bottom: 2rem;
+}
+.contact-left .lead{
+    padding: 0.1rem;
+}
+.contact-left form{
+    margin-top: 1rem;
+}
+.contact-left form .form-control{
+    display: block;
+    margin: 1.6rem 0;
+    border: 2px solid  rgb(255, 145, 0);
+    padding: 0.5rem;
+    width: 95%;
+    background-color: white;
+}
+.contact-left form .form-control::placeholder{
+    font-size: 15px;
+    font-family: 'Poppins', sans-serif;
+}
+.contact-left .btn-submit{
+    margin-top: 15px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
+    font-family: 'Poppins', sans-serif;
+    background-color:  rgb(255, 145, 0);
+    color: #fff;
+    margin-top: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 1rem;
+    transition: var(--transition);
+    border: none;
+}
+.contact-left .btn-submit:hover{
+    background-color:white;
+    color: black;
+}
+.form-control , select {
+    font-family: 'Poppins', sans-serif;
+    opacity: 0.5;
+}
+
+       
+        @media (max-width: 700px) {
+            .text {
+                font-size: 30px;
+            }
+
+            .form-control {
+                display: block;
+            }
+
+            .input-data {
+                margin: 35px 0;
+            }
+
+            .submit-btn .input-data {
+                width: 40%;
+            }
+            .container{
+                margin-left: 20px;
+                max-width: 370px;
+                
+            }
+        }
+
+        footer {
+            background-color: #000;
+            padding: 40px 20px;
+            border-top: 1px solid #ddd;
+            box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .footer__container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .footer__col {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .footer__col .u {
+            color: #fff;
+        }
+
+        .footer__col li {
+            color: #fff;
+        }
+
+        .footer__col img.footer-logo {
+            max-width: 150px;
+            margin-bottom: 20px;
+            display: block;
+            border-radius: 50%;
+            border: 4px solid orangered;
+        }
+
+        .footer__links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .footer__links li {
+            color: #fff;
+        }
+
+        .footer__links a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .footer__links a:hover {
+            color: #ff9500;
+        }
+
+        .footer__bar {
+            text-align: center;
+            padding: 10px 20px;
+            background-color: #f4f4f4;
+            font-size: 0.9rem;
+            color: #000000;
+            border-top: 1px solid #ddd;
+            margin-top: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .footer__container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .footer__links {
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+            }
+        }
+    </style>
+    </head>
+   
+        </script>
+    <body>
+        <nav class="navbar">
+            <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+            <ul id="nav-menu">
+                <li><a href="index.html#home">HOME</a></li>
+                <li><a href="index.html#about">ABOUT US</a></li>
+                <li><a href="index.html#gal">GALLERY</a></li>
+            </ul>
+            <div class="logo">
+                <img src="logo.jpg" alt="Logo" style="border-radius: 50%;">
+            </div>
+            <ul>
+                <li><a href="index.html#client">CLIENTS</a></li>
+                <li><a href="index.html#blog">VIDEOS</a></li>
+                <li><a href="form.html">CONTACT US</a></li>
+            </ul>
+        </nav>
+
+        <div class="container">
+            <div class="contact-left">
+                <div class="text">CONTACT US</div>
+                <p class="lead"><i class="fas fa-phone-alt"></i>
+                    +91-6374110090</p>
+                <p class="lead"><i class="fas fa-envelope"></i>
+                    momentstoday@gmail.com</p>
+                    <form action="https://formsubmit.co/momentstodayphotography@gmail.com" method="POST">
+                        <input type="text" name="name" class="form-control" placeholder="Your name here ..." id="name">
+                        <input type="email" name="email" class="form-control" placeholder="Your email here" id="email">
+                        <input type="text" name="city" placeholder="Enter Your City" class="form-control" id="city">
+                        <input type="text" name="phone" placeholder="Enter Your Phone number" class="form-control" pattern="\d{10}" id="phone">
+                 
+                 
+                        <select name="event" class="form-control" id="event">
+                            <option value="wedding">Wedding</option>
+                            <option value="babyshoot">Baby Shoot</option>
+                            <option value="candid">Candid</option>
+                            <option value="babyshower">Baby Shower</option>
+                            <option value="reception">Reception</option>
+                            <option value="others">Others</option>
+                        </select>
+                        <input type="date" name="date" class="form-control" id="date">
+                        <textarea name="message" rows="4" cols="50" placeholder="Enter your message" class="form-control" id="message"></textarea>
+                        <input type="submit" class="btn-submit btn" value="Submit">
+                    </form>
+                    
+            </div>
+        </div>
+
+        <footer>
+            <div class="footer__container">
+                <div class="footer__col">
+                    <img src="logo.jpg" alt="Logo" class="footer-logo">
+                </div>
+                <div class="footer__col">
+                    <h4 class="u">Useful Links</h4>
+                    <ul class="footer__links">
+                        <li><a href="index.html#home">HOME</a></li>
+                        <li><a href="index.html#about">ABOUT US</a></li>
+                        <li><a href="index.html#service">SERVICES</a></li>
+                        <li><a href="index.html#client">CLIENT</a></li>
+                        <li><a href="index.html#blog">VIDEO</a></li>
+                        <li><a href="form.html">CONTACT US</a></li>
+                    </ul>
+                </div>
+                <div class="footer__col">
+                    <h4>Contact Us</h4>
+                    <ul class="footer__links">
+                        <li>Email: momentstodayphotography@gmail.com</li>
+                        <li>Phone: +916374110090</li>
+                        <li>Address: omalur , salem</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer__bar">
+                <p>&copy; 2024 Momentstodayphotography. All rights reserved.</p>
+            </div>
+        </footer>
+
+        <script>
+        function toggleMenu() {
+            const navMenu = document.getElementById('nav-menu');
+            navMenu.classList.toggle('show');
+        }
+
+        
+    </script>
+    </body>
+</html>

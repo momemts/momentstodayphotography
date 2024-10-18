@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accordion Gallery</title>
+
+    <style>
+      /* Global Styles */
+@import url("https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+:root {
+  --text-dark: #171717;
+  --text-light: #525252;
+  --extra-light: #a3a3a3;
+  --white: #ffffff;
+  --max-width: 1200px;
+  --header-font: "Merriweather", serif;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.section__container {
+  max-width: var(--max-width);
+  margin: auto;
+  padding: 5rem 1rem;
+  font-family: "Montserrat", sans-serif;
+}
+
+.section__header {
+  margin-bottom: 1rem;
+  font-size: 2rem;
+  font-weight: 400;
+  font-family: var(--header-font);
+  color: var(--text-dark);
+  text-align: center;
+}
+
+.section__description {
+  color: var(--text-light);
+  line-height: 1.75rem;
+  text-align: center;
+}
+
+a {
+  text-decoration: none;
+  transition: 0.3s;
+  color: white;
+  font-family: "Montserrat", sans-serif;
+}
+body {
+        
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+        background-image: linear-gradient(to bottom, #FFD166, #FFFCF9);
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        font-family: "Montserrat", sans-serif;
+}
+
+      /* Navigation Bar Styles */
+.navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #ff9500; /* Orange Theme */
+        padding: 10px 20px;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        opacity: 0.8;
+        font-family: "Montserrat", sans-serif;
+        color: var(--white);
+      }
+
+      .navbar ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+      }
+
+      .navbar li {
+        margin: 0 15px;
+      }
+
+      .navbar a {
+        text-decoration: none;
+        
+        color: var(--white);
+        font-weight: bold;
+        transition: color 0.3s, background-color 0.3s;
+        padding: 5px 10px;
+        border-radius: 5px;
+        font-family: "Montserrat", sans-serif;
+      }
+
+      .navbar a:hover {
+       
+        color: var(--white);
+
+      }
+
+      .navbar .logo img {
+        max-width: 100px;
+        height: auto;
+      }
+
+      /* Responsive Navigation */
+      .menu-toggle {
+        display: none;
+      }
+
+      @media screen and (max-width: 768px) {
+        .navbar ul {
+          flex-direction: column;
+          display: none;
+          width: 100%;
+          
+        }
+
+        .navbar ul.show {
+          display: flex;
+        }
+
+        .navbar li {
+          margin: 10px 0;
+        }
+
+        .menu-toggle {
+          display: block;
+          cursor: pointer;
+          color: white;
+        }
+      }
+
+      /* Image Grid Styles */
+      .image-grid-container {
+        flex-grow: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 20px;
+        margin-bottom: 20px;
+      }
+
+      .image-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+        width: 90%;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .image-item {
+        position: relative;
+        overflow: hidden;
+        cursor: pointer;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, z-index 0.3s ease;
+      }
+
+      .image-item:hover {
+        transform: scale(1.05);
+        z-index: 10;
+        text-decoration: none;
+
+      }
+
+      .image-item img {
+        width: 100%;
+        height: auto;
+        display: block;
+        border-radius: 10px;
+        
+      }
+
+      .overlay {
+        text-decoration: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.6);
+        color: #fff;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        padding: 20px;
+        text-align: center;
+        border-radius: 10px;
+      }
+
+      .image-item:hover .overlay {
+        opacity: 1;
+        text-decoration: none;
+      }
+
+      .overlay h3 {
+        margin-bottom: 10px;
+        font-size: 1.5em;
+        text-decoration: none;
+      }
+
+      .overlay p {
+        font-size: 1em;
+        line-height: 1.5;
+        text-decoration: none;
+      }
+.image-item::after {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 2rem;
+  font-family: 'Poppins', sans-serif;
+  color: var(--text-dark);
+}
+.image-item:nth-child(1)::after {
+  content: "WEDDINGS";
+  
+  font-weight: bold;
+  font-family: 'Poppins', sans-serif;
+  color: #ffffff;
+  left: 36%;
+}
+.image-item:nth-child(2)::after {
+  content: "OUTDOOR";
+  
+  font-weight: bold;
+  font-family: 'Poppins', sans-serif;
+  color: #ffffff;
+  left: 32%;
+}
+.image-item:nth-child(3)::after {
+  content: "MATERNITY";
+  
+  font-weight: bold;
+  font-family: 'Poppins', sans-serif;
+  color: #ffffff;
+  left: 36%;
+}
+.image-item:nth-child(4)::after {
+  content: "BRIDE&BABY";
+  
+  font-weight: bold;
+  font-family: 'Poppins', sans-serif;
+  color: #ffffff;
+  left: 38%;
+}
+
+
+
+
+
+
+@keyframes scroll {
+  to {
+    transform: translateX(calc(-50% - 0.5rem));
+  }
+}      
+
+      /* Footer Styles */
+.footer__container {
+  display: grid;
+  gap: 4rem 0;
+  align-items: center;
+}
+
+.footer__col {
+  padding-inline: 2rem;
+}
+
+.footer__container img {
+  max-width: 120px;
+  margin-left: 90px;
+  margin-bottom: 1rem;
+  
+}
+
+.footer__socials {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.footer__socials i {
+  font-size: 1.5rem;
+  color: var(--text-dark);
+}
+
+.footer__socials i:hover {
+  color: var(--text-light);
+}
+
+.footer__links {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
+
+.footer__links a {
+  display: block;
+  font-weight: 600;
+  color: var(--text-dark);
+  text-align: center;
+}
+
+.footer__links a:hover {
+  color: var(--text-light);
+}
+
+.footer__col h4 {
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--text-dark);
+  text-align: center;
+}
+
+.footer__col p {
+  color: var(--text-light);
+  line-height: 1.75rem;
+  text-align: center;
+}
+
+.footer__bar {
+  padding: 1rem;
+  font-size: 0.9rem;
+  color: var(--extra-light);
+  background-color: var(--text-dark);
+  text-align: center;
+}
+
+@media (width > 540px){
+  .footer__container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .footer__col:nth-child(1) {
+    grid-area: 1/1/2/3;
+  }
+
+  .footer__col:nth-child(3) {
+    border-left: 2px solid var(--text-dark);
+  }
+}
+
+@media (width > 768px){
+
+  .footer__container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .footer__col:nth-child(1) {
+    grid-area: 1/2/2/3;
+    border-left: 2px solid var(--text-dark);
+    border-right: 2px solid var(--text-dark);
+  }
+
+  .footer__col:nth-child(3) {
+    border: none;
+  }
+}
+
+@media (width : 768px){
+  .section__container {
+    margin-top: 0px;
+  }
+
+  .footer__container img{
+    margin-left: 40px;
+  }
+
+
+}
+    </style>
+  </head>
+  <body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+      <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+      <ul id="nav-menu">
+        <li><a href="index.html">HOME</a></li>
+        <li><a href="index.html#about">ABOUT US</a></li>
+        <li><a href="index.html#service">SERVICES</a></li>
+      </ul>
+      <div class="logo">
+        <img src="logo.jpg" alt="Logo" style="border-radius: 50%;">
+      </div>
+      <ul>
+        <li><a href="index.html#client">CLIENTS</a></li>
+        <li><a href="index.html#blog">VIDEOS</a></li>
+        <li><a href="form.html">CONTACT US</a></li>
+      </ul>
+    </nav>
+
+    <!-- Image Grid Section -->
+    <div class="image-grid-container">
+      <div class="image-grid">
+        <div class="image-item">
+          <img src="m5.jpg" alt="Image 1">
+          <div class="overlay">
+            <h3><a href="wedding.html" style="color: #fff;">Wedding</a></h3>
+          </div>
+        </div>
+        <div class="image-item">
+          <img src="c6.jpg" alt="Image 2">
+          <div class="overlay">
+            <h3><a href="out.html" style="color: #fff;">Outdoor</a></h3>
+          </div>
+        </div>
+        <div class="image-item">
+          <img src="o2.jpg" alt="Image 3">
+          <div class="overlay">
+            <h3><a href="candid.html" style="color: #fff;">Maternity</a></h3>
+          </div>
+        </div>
+        <div class="image-item">
+          <img src="Bride/037aa1.jpg" alt="Image 4" style="color: #fff;" height="100%">
+          <div class="overlay">
+            <h3><a href="baby.html">Baby Shoot</a></h3>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer Section -->
+    <footer id="footer">
+      <div class="section__container footer__container">
+        <div class="footer__col">
+          <img src="logo.jpg" alt="logo" />
+          <div class="footer__socials">
+            <a href="#"><i class="ri-facebook-fill"></i></a>
+            <a href="#"><i class="ri-instagram-line"></i></a>
+            <a href="#"><i class="ri-twitter-fill"></i></a>
+            <a href="#"><i class="ri-youtube-fill"></i></a>
+            <a href="#"><i class="ri-pinterest-line"></i></a>
+          </div>
+        </div>
+        <div class="footer__col">
+          <ul class="footer__links">
+            <li><a href="#home">HOME</a></li>
+            <li><a href="#about"> ABOUT US</a></li>
+            <li><a href="#service"> SERVICES</a></li>
+            <li><a href="#client">CLIENT</a></li>
+            <li><a href="#blog">VIDEO</a></li>
+            <li><a href="form.html"> CONTACT US</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h4>STAY IN TOUCH</h4>
+          <p>
+            Keep up-to-date with all things Capturer! Join our
+            community and
+            never miss a moment!
+          </p>
+        </div>
+      </div>
+      <div class="footer__bar">
+        Copyright © 2024 momentstodayphotography. All rights reserved.
+      </div>
+    </footer>
+
+    <script>
+      function toggleMenu() {
+        const navMenu = document.getElementById('nav-menu');
+        navMenu.classList.toggle('show');
+
+        
+      }
+    </script>
+
+<script src="https://unpkg.com/scrollreveal"></script>
+
+<script
+src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  </body>
+</html>
