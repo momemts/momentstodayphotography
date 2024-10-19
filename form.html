@@ -4,6 +4,16 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Photography Booking Form</title>
+        <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+</script>
+<script type="text/javascript">
+   (function(){
+      emailjs.init({
+        publicKey: "-ZVF4E-hwyF6IeHWO",
+      });
+   })();
+</script>
         <style>
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
@@ -304,7 +314,7 @@
                     +91-6374110090</p>
                 <p class="lead"><i class="fas fa-envelope"></i>
                     momentstoday@gmail.com</p>
-                    <form action="https://formsubmit.co/momentstodayphotography@gmail.com" method="POST">
+                    <form action="#" method="POST">
                         <input type="text" name="name" class="form-control" placeholder="Your name here ..." id="name">
                         <input type="email" name="email" class="form-control" placeholder="Your email here" id="email">
                         <input type="text" name="city" placeholder="Enter Your City" class="form-control" id="city">
@@ -321,7 +331,7 @@
                         </select>
                         <input type="date" name="date" class="form-control" id="date">
                         <textarea name="message" rows="4" cols="50" placeholder="Enter your message" class="form-control" id="message"></textarea>
-                        <input type="submit" class="btn-submit btn" value="Submit">
+                        <input type="submit" class="btn-submit btn" value="Submit" onclick="sendMail(); return false;">
                     </form>
                     
             </div>
@@ -363,6 +373,32 @@
             navMenu.classList.toggle('show');
         }
 
+        
+    </script>
+                <script>
+        function toggleMenu() {
+            const navMenu = document.getElementById('nav-menu');
+            navMenu.classList.toggle('show');
+        }
+        function sendMail() {
+            let params = {
+                Name: document.getElementById("name").value,
+                Email: document.getElementById("email").value,
+                City: document.getElementById("city").value,
+                Phone: document.getElementById("phone").value,
+                Order_Type: document.getElementById("event").value, 
+                Date: document.getElementById("date").value, 
+                Message: document.getElementById("message").value,
+            };
+        
+            emailjs.send("service_fubzvo7", "template_9vqy7nb", params)
+    .then(() => alert("Email sent Successfully!!!"))
+    .catch((error) => {
+        console.error("Failed to send email:", error); // Log the error object to the console
+        alert("Failed to send email. Check the console for more details.");
+    });
+
+        }
         
     </script>
     </body>
